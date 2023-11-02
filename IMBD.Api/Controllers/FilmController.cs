@@ -46,5 +46,12 @@ namespace IMBD.Api.Controllers
 			}
 			return BadRequest();
 		}
+		[HttpPut]
+		public IActionResult UpdateFilm(UpdateFilmVM updateFilmVM)
+		{
+			var values = _mapper.Map<Film>(updateFilmVM);
+			_filmService.TUpdate(values);
+			return Ok();
+		}
 	}
 }

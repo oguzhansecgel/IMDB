@@ -11,6 +11,7 @@ namespace IMBD.Api.AutoMapper
 		{
 			CreateMap<FilmDto, Film>().ReverseMap();
 			CreateMap<CreateFilmVM, Film>().ReverseMap();
+			CreateMap<UpdateFilmVM, Film>().ReverseMap();
 		}
 	}
 }
