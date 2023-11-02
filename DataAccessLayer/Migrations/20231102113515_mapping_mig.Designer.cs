@@ -3,6 +3,7 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20231102113515_mapping_mig")]
+    partial class mapping_mig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,28 +42,6 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = 1,
-                            CategoryName = "Aksiyon"
-                        },
-                        new
-                        {
-                            CategoryId = 2,
-                            CategoryName = "Komedi"
-                        },
-                        new
-                        {
-                            CategoryId = 3,
-                            CategoryName = "Romantik"
-                        },
-                        new
-                        {
-                            CategoryId = 4,
-                            CategoryName = "Korku"
-                        });
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Director", b =>
@@ -89,14 +69,6 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("DirectorID");
 
                     b.ToTable("Directors");
-
-                    b.HasData(
-                        new
-                        {
-                            DirectorID = 1,
-                            DirectorName = "Şahan",
-                            DirectorSurname = "Gökbahar"
-                        });
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Film", b =>
@@ -139,17 +111,6 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("DirectorId");
 
                     b.ToTable("Films");
-
-                    b.HasData(
-                        new
-                        {
-                            FilmId = 1,
-                            CategoryId = 2,
-                            DirectorId = 1,
-                            FilmDescription = "Deneme Deneme Deneme Deneme",
-                            FilmName = "Recep İvedik 1 ",
-                            FilmYear = 2008
-                        });
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Film", b =>

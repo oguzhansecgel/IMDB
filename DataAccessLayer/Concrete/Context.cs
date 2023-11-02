@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using DataAccessLayer.Mapping;
+using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,5 +19,14 @@ namespace DataAccessLayer.Concrete
 		public DbSet<Film> Films { get; set; }
 		public DbSet<Category> Categories { get; set; }
 		public DbSet<Director> Directors { get; set; }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.ApplyConfiguration(new FilmMapping<Film>());
+			modelBuilder.ApplyConfiguration(new DirectorMapping<Director>());
+			modelBuilder.ApplyConfiguration(new CategoryMapping<Category>());
+		}
+
 	}
+
 }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMBD.Api", "IMBD.Api\IMBD.Api.csproj", "{C3C26299-CE4F-4870-902C-2A44C3936488}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DtoLayer", "DtoLayer\DtoLayer.csproj", "{C359C661-126A-4388-AF8E-62153A859504}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C3C26299-CE4F-4870-902C-2A44C3936488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3C26299-CE4F-4870-902C-2A44C3936488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3C26299-CE4F-4870-902C-2A44C3936488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C359C661-126A-4388-AF8E-62153A859504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C359C661-126A-4388-AF8E-62153A859504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C359C661-126A-4388-AF8E-62153A859504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C359C661-126A-4388-AF8E-62153A859504}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
