@@ -66,6 +66,12 @@ namespace IMBD.Api.Controllers
 			var values = _categoryService.TGetById(id);
 			return Ok(values);
 		}
+		[HttpGet("films/id")]
+		public IActionResult GetCategoryWithFilm(int id) 
+		{
+			var categoryWithFilm = _context.Films.Where(x => x.CategoryId== id).ToList();
+			return Ok(categoryWithFilm);
+		}
 	 
 	}
 }

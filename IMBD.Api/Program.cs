@@ -20,7 +20,8 @@ builder.Services.AddScoped<IFilmDal,EfFilmDal>();
 builder.Services.AddScoped<ICategoryService,CategoryManager>();
 builder.Services.AddScoped<ICategoryDal,EfCategoryDal>();
 
-
+builder.Services.AddScoped<IDirectorService,DirectorManager>();
+builder.Services.AddScoped<IDirectorDal,EfDirectorDal>();
 
 #endregion
 #region validator

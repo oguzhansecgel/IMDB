@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DtoLayer.Dto;
 using DtoLayer.ViewModel.CategoryVM;
+using DtoLayer.ViewModel.Director;
 using DtoLayer.ViewModel.FilmVM;
 using EntityLayer.Concrete;
 
@@ -16,6 +17,9 @@ namespace IMBD.Api.AutoMapper
 
 			CreateMap<CreateCategoryVM,Category>().ReverseMap();	
 			CreateMap<UpdateCategoryVM,Category>().ReverseMap();	
+
+			CreateMap<CreateDirectorVM,Director>().ReverseMap();	
+			CreateMap<UpdateDirectorVM,Director>().ReverseMap();	
 		}
 	}
 }
