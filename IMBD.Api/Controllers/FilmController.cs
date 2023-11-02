@@ -40,8 +40,8 @@ namespace IMBD.Api.Controllers
 		{
 			if(ModelState.IsValid)
 			{
-				var category = _mapper.Map<Film>(createFilmVM);
-				_filmService.TInsert(category);
+				var film = _mapper.Map<Film>(createFilmVM);
+				_filmService.TInsert(film);
 				return Ok();
 			}
 			return BadRequest();

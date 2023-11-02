@@ -17,6 +17,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IFilmService,FilmManager>();
 builder.Services.AddScoped<IFilmDal,EfFilmDal>();
 
+builder.Services.AddScoped<ICategoryService,CategoryManager>();
+builder.Services.AddScoped<ICategoryDal,EfCategoryDal>();
+
 
 
 #endregion
