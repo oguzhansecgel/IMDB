@@ -3,11 +3,8 @@ using BusinessLayer.Abstract;
 using BusinessLayer.Exceptions;
 using DataAccessLayer.Concrete;
 using DtoLayer.ViewModel.CategoryVM;
-using DtoLayer.ViewModel.FilmVM;
 using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
 
 namespace IMBD.Api.Controllers
 {

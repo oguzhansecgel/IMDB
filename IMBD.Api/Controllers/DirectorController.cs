@@ -3,9 +3,7 @@ using BusinessLayer.Abstract;
 using BusinessLayer.Exceptions;
 using DataAccessLayer.Concrete;
 using DtoLayer.ViewModel.Director;
-using DtoLayer.ViewModel.FilmVM;
 using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IMBD.Api.Controllers
@@ -46,9 +44,10 @@ namespace IMBD.Api.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var director = _mapper.Map<Director>(createDirectorVM);
+				 var director = _mapper.Map<Director>(createDirectorVM);
 				_directorService.TInsert(director);
 				return Ok();
+
 			}
 			return BadRequest();
 		}
@@ -61,11 +60,11 @@ namespace IMBD.Api.Controllers
 		}
 
 		[HttpGet("{id}")]
-		public IActionResult GetDirectorWithFilm(int id) 
+		public IActionResult GetDirectorWithFilm(int id)
 		{
 			var directorWithFilm = _context.Films.Where(x => x.DirectorId == id).ToList();
 			return Ok(directorWithFilm);
-		
+
 		}
 	}
 }
