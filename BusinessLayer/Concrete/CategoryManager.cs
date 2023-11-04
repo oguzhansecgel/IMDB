@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.UnitOfWork;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,11 @@ namespace BusinessLayer.Concrete
 	public class CategoryManager : ICategoryService
 	{
 		private readonly ICategoryDal _categoryDal;
-
-		public CategoryManager(ICategoryDal categoryDal)
+		private readonly IUnitOfWork _unitOfWork;
+		public CategoryManager(ICategoryDal categoryDal, IUnitOfWork unitOfWork)
 		{
 			_categoryDal = categoryDal;
+			_unitOfWork = unitOfWork;
 		}
 
 		public List<Category> TGetAll()
@@ -36,16 +38,19 @@ namespace BusinessLayer.Concrete
 				throw new Exception($"{t.CategoryId} idli kategori bulunamadı");
 			}
 			_categoryDal.Delete(t);
+			_unitOfWork.Save();
 		}
 
 		public void TInsert(Category t)
 		{
 			_categoryDal.Insert(t);
+			_unitOfWork.Save();
 		}
 
 		public void TUpdate(Category t)
 		{
 			_categoryDal.Update(t);
+			_unitOfWork.Save();
 		}
 	}
 }

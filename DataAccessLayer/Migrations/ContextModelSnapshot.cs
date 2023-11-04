@@ -127,6 +127,9 @@ namespace DataAccessLayer.Migrations
                         .HasColumnName("FILM_ADI")
                         .HasColumnOrder(2);
 
+                    b.Property<int>("FilmRated")
+                        .HasColumnType("int");
+
                     b.Property<int>("FilmYear")
                         .HasColumnType("int")
                         .HasColumnName("FILM_CIKIS_SENESİ")
@@ -148,6 +151,7 @@ namespace DataAccessLayer.Migrations
                             DirectorId = 1,
                             FilmDescription = "Deneme Deneme Deneme Deneme",
                             FilmName = "Recep İvedik 1 ",
+                            FilmRated = 0,
                             FilmYear = 2008
                         });
                 });

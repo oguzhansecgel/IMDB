@@ -6,6 +6,7 @@ using BusinessLayer.Validator.Films;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using DataAccessLayer.UnitOfWork;
 using DtoLayer.ViewModel.CategoryVM;
 using DtoLayer.ViewModel.Director;
 using DtoLayer.ViewModel.FilmVM;
@@ -30,6 +31,8 @@ builder.Services.AddScoped<ICategoryDal,EfCategoryDal>();
 
 builder.Services.AddScoped<IDirectorService,DirectorManager>();
 builder.Services.AddScoped<IDirectorDal,EfDirectorDal>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 #endregion
 

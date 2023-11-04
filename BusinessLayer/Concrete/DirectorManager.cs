@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.UnitOfWork;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,11 @@ namespace BusinessLayer.Concrete
 	public class DirectorManager : IDirectorService
 	{
 		private readonly IDirectorDal _directorDal;
-
-		public DirectorManager(IDirectorDal directorDal)
+		private readonly IUnitOfWork _unitOfWork;
+		public DirectorManager(IDirectorDal directorDal, IUnitOfWork unitOfWork)
 		{
 			_directorDal = directorDal;
+			_unitOfWork = unitOfWork;
 		}
 
 		public List<Director> TGetAll()
@@ -36,16 +38,19 @@ namespace BusinessLayer.Concrete
 				throw new Exception($"{t.DirectorID} idli yönetmen bulunamadı");
 			}
 			_directorDal.Delete(t);
+			_unitOfWork.Save();
 		}
 
 		public void TInsert(Director t)
 		{
 			_directorDal.Insert(t);
+			_unitOfWork.Save();
 		}
 
 		public void TUpdate(Director t)
 		{
 			_directorDal.Update(t);
+			_unitOfWork.Save();
 		}
 	}
 }

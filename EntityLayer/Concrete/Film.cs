@@ -12,6 +12,7 @@ namespace EntityLayer.Concrete
 		public string FilmName { get; set; }
 		public string FilmDescription { get; set;}
 		public int FilmYear { get; set; }
+		public int FilmRated { get; set; }
 		public int DirectorId { get; set; }
 		public int CategoryId { get; set; }
 
