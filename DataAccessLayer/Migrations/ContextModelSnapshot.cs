@@ -156,6 +156,48 @@ namespace DataAccessLayer.Migrations
                         });
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Series", b =>
+                {
+                    b.Property<int>("SeriesId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("DIZI_ID")
+                        .HasColumnOrder(1);
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeriesId"), 1L, 1);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DirectorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SeriesDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("DIZI_ACIKLAMASI")
+                        .HasColumnOrder(3);
+
+                    b.Property<string>("SeriesName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("DIZI_ADI")
+                        .HasColumnOrder(2);
+
+                    b.Property<int>("SeriesYear")
+                        .HasColumnType("int")
+                        .HasColumnName("DIZI_YILI")
+                        .HasColumnOrder(4);
+
+                    b.HasKey("SeriesId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("DirectorId");
+
+                    b.ToTable("Serieses");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Film", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.Category", "Category")
@@ -166,6 +208,25 @@ namespace DataAccessLayer.Migrations
 
                     b.HasOne("EntityLayer.Concrete.Director", "Director")
                         .WithMany("FilmId")
+                        .HasForeignKey("DirectorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Director");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Series", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.Director", "Director")
+                        .WithMany()
                         .HasForeignKey("DirectorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

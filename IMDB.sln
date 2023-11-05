@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IMBD.Api", "IMBD.Api\IMBD.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DtoLayer", "DtoLayer\DtoLayer.csproj", "{C359C661-126A-4388-AF8E-62153A859504}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMDB.Web", "IMDB.Web\IMDB.Web.csproj", "{863D1B39-BEBB-4DB9-9CB6-0E7544A9A30E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C359C661-126A-4388-AF8E-62153A859504}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C359C661-126A-4388-AF8E-62153A859504}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C359C661-126A-4388-AF8E-62153A859504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{863D1B39-BEBB-4DB9-9CB6-0E7544A9A30E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{863D1B39-BEBB-4DB9-9CB6-0E7544A9A30E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{863D1B39-BEBB-4DB9-9CB6-0E7544A9A30E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{863D1B39-BEBB-4DB9-9CB6-0E7544A9A30E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

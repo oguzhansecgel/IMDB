@@ -32,6 +32,9 @@ builder.Services.AddScoped<ICategoryDal,EfCategoryDal>();
 builder.Services.AddScoped<IDirectorService,DirectorManager>();
 builder.Services.AddScoped<IDirectorDal,EfDirectorDal>();
 
+builder.Services.AddScoped<ISeriesDal,EfSeriesDal>();
+builder.Services.AddScoped<ISeriesService,SeriesManager>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 #endregion
@@ -51,7 +54,13 @@ builder.Services.AddTransient<IValidator<CreateCategoryVM>,CreateCategoryValidat
 builder.Services.AddTransient<IValidator<UpdateCategoryVM>,UpdateCategoryValidator>();
 #endregion
 
-
+builder.Services.AddCors(opt =>
+{
+	opt.AddPolicy("IMBDApiCors", opts =>
+	{
+		opts.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+	});
+});
 builder.Services.AddDbContext<Context>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers();
@@ -71,7 +80,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("IMBDApiCors");
 app.UseAuthorization();
 
 app.MapControllers();
