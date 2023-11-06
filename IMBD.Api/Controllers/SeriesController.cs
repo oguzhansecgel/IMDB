@@ -28,8 +28,13 @@ namespace IMBD.Api.Controllers
 			var values = _seriesService.TGetAll();
 			return Ok(values);
 		}
-
-		[HttpDelete("{id}")]
+        [HttpGet("{id}")]
+        public IActionResult GetSeries(int id)
+        {
+            var values = _seriesService.TGetById(id);
+            return Ok(values);
+        }
+        [HttpDelete("{id}")]
 		public IActionResult DeleteSeries(int id)
 		{
 			var values = _seriesService.TGetById(id);

@@ -24,6 +24,8 @@ namespace IMBD.Api.AutoMapper
 
 			CreateMap<CreateSeriesVM,Series>().ReverseMap();
 			CreateMap<UpdateSeriesVM,Series>().ReverseMap();
+			CreateMap<SeriesDto,Series>().ReverseMap();
+
 		}
 	}
 }

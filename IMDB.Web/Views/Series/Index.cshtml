@@ -1,8 +1,43 @@
-﻿
+﻿@model List<SeriesDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+ 
 
+<div class="bg-secondary rounded h-100 p-4">
+    <h6 class="mb-4">Basic Table</h6>
+    <a type="button" class="btn btn-success rounded-pill m-2" href="/Series/CreateSeries/">Create</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Dizi Adı</th>
+                <th scope="col">Dizi Senesi</th>
+                <th scope="col">Dizi Yapımcısı</th>
+                <th scope="col">Dizi Kategorisi</th>
+                <th scope="col">Dizi Sil</th>
+                <th scope="col">Dizi Güncelle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">1</th>
+                    <td>@item.SeriesName</td>
+                    <td>@item.SeriesYear</td>
+                    <td>@item.DirectorId</td>
+                    <td>@item.CategoryId</td>
+                    <td><a class="btn btn-danger rounded-pill m-2" href="/Series/DeleteSeries/@item.SeriesId">Delete</a></td>
+                    <td><a class="btn btn-warning rounded-pill m-2" href="/Series/UpdateSeries/@item.SeriesId">Update</a></td>
+                    
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
