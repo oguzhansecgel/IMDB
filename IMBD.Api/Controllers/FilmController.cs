@@ -24,7 +24,15 @@ namespace IMBD.Api.Controllers
 			var values = _filmService.TGetAll();
 			return Ok(values);
 		}
-		[HttpDelete("{id}")]
+
+        [HttpGet("{id}")]
+        public IActionResult GetFilm(int id)
+        {
+            var values = _filmService.TGetById(id);
+            return Ok(values);
+        }
+
+        [HttpDelete("{id}")]
 		public IActionResult DeleteFilm(int id)
 		{
 			var values = _filmService.TGetById(id);

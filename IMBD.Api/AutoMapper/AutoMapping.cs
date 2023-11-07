@@ -21,6 +21,7 @@ namespace IMBD.Api.AutoMapper
 
 			CreateMap<CreateDirectorVM,Director>().ReverseMap();	
 			CreateMap<UpdateDirectorVM,Director>().ReverseMap();	
+			CreateMap<DirectorDto,Director>().ReverseMap();	
 
 			CreateMap<CreateSeriesVM,Series>().ReverseMap();
 			CreateMap<UpdateSeriesVM,Series>().ReverseMap();

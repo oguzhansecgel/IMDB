@@ -1,0 +1,24 @@
+﻿@model UpdateDirectorVM
+@{
+    ViewData["Title"] = "UpdateDirector";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+
+<form method="post">
+    <input type="hidden" asp-for="DirectorID" />
+    <label>Yönetmen Adı</label>
+    <input type="text" asp-for="DirectorName" class="form-control" />
+    @*<span asp-validation-for="SeriesName" class="text-danger"></span>*@
+
+    <br />
+    <label>Yönetmen Soyadı</label>
+    <input type="text" asp-for="DirectorSurname" class="form-control" />
+    @*<span asp-validation-for="ProductPrice" class="text-danger"></span>*@
+   
+    <br />
+    <button class="btn btn-outline-success">Yönetmen Güncelle</button>
+</form>
+
+
+

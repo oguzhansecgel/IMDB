@@ -1,0 +1,40 @@
+﻿@model List<DirectorDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+
+<div class="bg-secondary rounded h-100 p-4">
+    <h6 class="mb-4">Yönetmen</h6>
+    <a type="button" class="btn btn-success rounded-pill m-2" href="/Director/CreateDirector">Create</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Yönetmen Adı</th>
+                <th scope="col">Yönetmen Soyadı</th>
+                <th scope="col">Yönetmen Sil</th>
+                <th scope="col">Yönetmen Güncelle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <th scope="row">@count</th>
+                    <td>@item.DirectorName</td>
+                    <td>@item.DirectorSurname</td>
+                    <td><a class="btn btn-danger rounded-pill m-2" href="/Director/DeleteDirector/@item.DirectorID">Delete</a></td>
+                    <td><a class="btn btn-warning rounded-pill m-2" href="/Director/UpdateDirector/@item.DirectorID">Update</a></td>
+
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>

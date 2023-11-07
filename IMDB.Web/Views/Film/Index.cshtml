@@ -1,0 +1,43 @@
+﻿@model List<FilmDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="bg-secondary rounded h-100 p-4">
+    <h6 class="mb-4">Basic Table</h6>
+    <a type="button" class="btn btn-success rounded-pill m-2" href="/Film/CreateFilm/">Create</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Film Adı</th>
+                <th scope="col">Film Senesi</th>
+                <th scope="col">Film Açıklaması</th>
+                <th scope="col">Film Yapımcısı</th>
+                <th scope="col">Film Kategorisi</th>
+                <th scope="col">Film Sil</th>
+                <th scope="col">Film Güncelle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">1</th>
+                    <td>@item.FilmName</td>
+                    <td>@item.FilmYear</td>
+                    <td>@item.FilmDescription</td>
+                    <td>@item.DirectorId</td>
+                    <td>@item.CategoryId</td>
+                    <td><a class="btn btn-danger rounded-pill m-2" href="/Film/DeleteFilm/@item.FilmId">Delete</a></td>
+                    <td><a class="btn btn-warning rounded-pill m-2" href="/Film/UpdateFilm/@item.FilmId">Update</a></td>
+
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>

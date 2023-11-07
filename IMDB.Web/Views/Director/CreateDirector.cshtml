@@ -1,0 +1,16 @@
+﻿@model CreateDirectorVM
+@{
+    ViewData["Title"] = "CreateDirector";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+	<label>Yönetmen Adı</label>
+	<input type="text" asp-for="DirectorName" class="form-control" />
+	@*<span asp-validation-for="SeriesName" class="text-danger"></span>*@
+	<br />
+	<label>Yönetmen Soyadı</label>
+	<input type="text" asp-for="DirectorSurname" class="form-control" />
+	@*<span asp-validation-for="ProductPrice" class="text-danger"></span>*@
+	<button class="btn btn-primary">Yönetmen Ekle</button>
+</form>

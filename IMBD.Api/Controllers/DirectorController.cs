@@ -28,6 +28,12 @@ namespace IMBD.Api.Controllers
 			var values = _directorService.TGetAll();
 			return Ok(values);
 		}
+		[HttpGet("{id}")]
+		public IActionResult GetDirector(int id)
+		{
+			var values = _directorService.TGetById(id);
+			return Ok(values);
+		}
 		[HttpDelete("{id}")]
 		public IActionResult DeleteFilm(int id)
 		{
@@ -59,12 +65,12 @@ namespace IMBD.Api.Controllers
 			return Ok();
 		}
 
-		[HttpGet("{id}")]
-		public IActionResult GetDirectorWithFilm(int id)
-		{
-			var directorWithFilm = _context.Films.Where(x => x.DirectorId == id).ToList();
-			return Ok(directorWithFilm);
+		//[HttpGet("{id}")]
+		//public IActionResult GetDirectorWithFilm(int id)
+		//{
+		//	var directorWithFilm = _context.Films.Where(x => x.DirectorId == id).ToList();
+		//	return Ok(directorWithFilm);
 
-		}
+		//}
 	}
 }
