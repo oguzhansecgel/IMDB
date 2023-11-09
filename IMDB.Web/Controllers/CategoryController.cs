@@ -1,41 +1,38 @@
-﻿using DataAccessLayer.Concrete;
-using DtoLayer.Dto;
+﻿using DtoLayer.Dto;
+using DtoLayer.ViewModel.CategoryVM;
 using DtoLayer.ViewModel.Director;
-using DtoLayer.ViewModel.SeriesVM;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace IMDB.Web.Controllers
 {
-	public class DirectorController : Controller
-	{
-		 
-		private readonly IHttpClientFactory _httpClientFactory;
+    public class CategoryController : Controller
+    {
+        private readonly IHttpClientFactory _httpClientFactory;
 
-		public DirectorController(IHttpClientFactory httpClientFactory)
-		{
-			_httpClientFactory = httpClientFactory;
-		}
+        public CategoryController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
 
-		public async Task<IActionResult> Index()
-		{
-			var client = _httpClientFactory.CreateClient();
-			var responseMessage = await client.GetAsync("https://localhost:7171/api/Director");
-			if (responseMessage.IsSuccessStatusCode)
-			{
-				var jsonData = await responseMessage.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<List<DirectorDto>>(jsonData);
-				return View(values);
-
-			}
-			return View();
-		}
-        public async Task<IActionResult> DeleteDirector(int id)
+        public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7171/api/Director/{id}");
+            var responseMessage = await client.GetAsync("https://localhost:7171/api/Category");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<CategoryDto>>(jsonData);
+                return View(values);
+
+            }
+            return View();
+        }
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:7171/api/Category/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -45,15 +42,16 @@ namespace IMDB.Web.Controllers
 
         }
 
+
         [HttpGet]
-        public async Task<IActionResult> UpdateDirector(int id)
+        public async Task<IActionResult> UpdateCategory(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7171/api/Director/{id}");           
+            var responseMessage = await client.GetAsync($"https://localhost:7171/api/Category/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateDirectorVM>(jsonData);
+                var values = JsonConvert.DeserializeObject<UpdateCategoryVM>(jsonData);
                 return View(values);
             }
 
@@ -61,14 +59,14 @@ namespace IMDB.Web.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateDirector(UpdateDirectorVM model)
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryVM model)
         {
             if (ModelState.IsValid)
             {
                 var client = _httpClientFactory.CreateClient();
                 var jsonData = JsonConvert.SerializeObject(model);
                 StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                var responseMessage = await client.PutAsync("https://localhost:7171/api/Director/", stringContent);
+                var responseMessage = await client.PutAsync("https://localhost:7171/api/Category/", stringContent);
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -78,21 +76,20 @@ namespace IMDB.Web.Controllers
 
             return View();
         }
-
         [HttpGet]
-        public IActionResult CreateDirector()
+        public IActionResult CreateCategory()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateDirector(CreateDirectorVM model)
+        public async Task<IActionResult> CreateCategory(CreateCategoryVM model)
         {
             if (ModelState.IsValid)
             {
                 var client = _httpClientFactory.CreateClient();
                 var jsonData = JsonConvert.SerializeObject(model);
                 StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                var responseMessage = await client.PostAsync("https://localhost:7171/api/Director/", stringContent);
+                var responseMessage = await client.PostAsync("https://localhost:7171/api/Category/", stringContent);
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
@@ -103,5 +100,6 @@ namespace IMDB.Web.Controllers
 
             return View();
         }
+
     }
 }

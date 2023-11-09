@@ -18,6 +18,7 @@ namespace IMBD.Api.AutoMapper
 
 			CreateMap<CreateCategoryVM,Category>().ReverseMap();	
 			CreateMap<UpdateCategoryVM,Category>().ReverseMap();	
+			CreateMap<CategoryDto,Category>().ReverseMap();	
 
 			CreateMap<CreateDirectorVM,Director>().ReverseMap();	
 			CreateMap<UpdateDirectorVM,Director>().ReverseMap();	

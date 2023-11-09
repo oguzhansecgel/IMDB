@@ -1,0 +1,47 @@
+﻿@model CountDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+
+
+<div class="row g-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+            <i class="fa fa-chart-line fa-3x text-primary"></i>
+            <div class="ms-3">
+                <p class="mb-2">Toplam Kategori</p>
+                <h6 class="mb-0">@Model.Category</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+            <div class="ms-3">
+                <p class="mb-2">Toplam Yönetmen</p>
+                <h6 class="mb-0">@Model.Director</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+            <i class="fa fa-chart-area fa-3x text-primary"></i>
+            <div class="ms-3">
+                <p class="mb-2">Toplam Dizi</p>
+                <h6 class="mb-0">@Model.Series</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+            <div class="ms-3">
+                <p class="mb-2">Toplam Film</p>
+                <h6 class="mb-0">@Model.Film</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
