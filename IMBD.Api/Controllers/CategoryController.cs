@@ -64,11 +64,11 @@ namespace IMBD.Api.Controllers
 			return Ok(values);
 		}
 		[HttpGet("films/id")]
-		public IActionResult GetCategoryWithFilm(int id) 
+		public IActionResult GetCategoryWithFilm(int id)
 		{
-			var categoryWithFilm = _context.Films.Where(x => x.CategoryId== id).ToList();
+			var categoryWithFilm = _context.Films.Where(x => x.CategoryId == id).ToList();
 			return Ok(categoryWithFilm);
 		}
-	 
+
 	}
 }

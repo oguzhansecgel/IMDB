@@ -15,7 +15,9 @@ namespace DtoLayer.Dto
 		public int FilmYear { get; set; }
 		public int DirectorId { get; set; }
 		public int CategoryId { get; set; }
-
-
+ 
+ 
+		 
 	}
+  
 }

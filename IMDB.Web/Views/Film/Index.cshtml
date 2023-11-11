@@ -1,4 +1,4 @@
-﻿@model List<FilmDto>
+﻿@model List<ResultFilmDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
@@ -29,8 +29,8 @@
                     <td>@item.FilmName</td>
                     <td>@item.FilmYear</td>
                     <td>@item.FilmDescription</td>
-                    <td>@item.DirectorId</td>
-                    <td>@item.CategoryId</td>
+                    <td>@item.DirectorName @item.DirectorSurname</td>
+                    <td> @item.CategoryName</td>
                     <td><a class="btn btn-danger rounded-pill m-2" href="/Film/DeleteFilm/@item.FilmId">Delete</a></td>
                     <td><a class="btn btn-warning rounded-pill m-2" href="/Film/UpdateFilm/@item.FilmId">Update</a></td>
 

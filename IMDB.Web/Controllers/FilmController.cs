@@ -1,9 +1,11 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DtoLayer.Dto;
 using DtoLayer.ViewModel.FilmVM;
 using DtoLayer.ViewModel.SeriesVM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -14,7 +16,6 @@ namespace IMDB.Web.Controllers
         Context c = new Context();
 
         private readonly IHttpClientFactory _httpClientFactory;
-
         public FilmController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
@@ -22,12 +23,14 @@ namespace IMDB.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
+          
+            
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7171/api/Film");
+            var responseMessage = await client.GetAsync("https://localhost:7171/api/Film/FilmListWithCategory");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<FilmDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultFilmDto>>(jsonData);
                 return View(values);
 
             }
